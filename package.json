@@ -1,0 +1,12 @@
+{
+  "name": "monomap",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/claudiolopezayala/MonoMap",
+  "author": "Claudio Alejandro Lopez Ayala",
+  "license": "UNLICENCE",
+  "private": false,
+  "dependencies": {
+    "typescript": "^5.6.2"
+  }
+}
