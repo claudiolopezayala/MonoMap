@@ -5,6 +5,7 @@ export class CaseRouter{
   static get routes(): Router{
     const router = Router();
     const caseController = new CaseController()
+    router.post("/", caseController.createCase)
     router.get("/", caseController.getAll)
     return router
   }
