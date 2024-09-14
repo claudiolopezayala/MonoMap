@@ -3,6 +3,23 @@ import { StatusCodes } from "http-status-codes"
 import { CaseModel }from "../model/case-model"
 
 export class CaseController {
+  public updateCase = async(req: Request, res: Response)=>{
+    try{
+      const monoCase = req.body
+      const {id} = req.params
+      const oldMonoCase = await CaseModel.findById(id)
+      await CaseModel.findByIdAndUpdate(id, {
+        ...monoCase,
+        creationDate: oldMonoCase!.creationDate,
+        isSent: false,
+      })
+      const updatedCase = await CaseModel.findById(id)
+      res.json(updatedCase).status(StatusCodes.OK)
+    }catch(error){
+      res.json(error).status(StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+  }
+
   public getoneById = async(req: Request, res: Response)=>{
     try{
       const {id} = req.params
