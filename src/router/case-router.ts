@@ -9,6 +9,7 @@ export class CaseRouter{
     router.get("/", caseController.getLastWeek)
     router.get("/:id", caseController.getoneById)
     router.put("/:id", caseController.updateCase)
+    router.delete("/:id", caseController.deleteCase)
     return router
   }
 }
