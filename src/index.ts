@@ -2,6 +2,7 @@ import express from "express"
 import { envs } from "./utils/dontenv";
 import AppRouter from "./router/app-router";
 import { MongoDatabase } from "./db/connection";
+import { EmailJob } from "./jobs/email.jobs";
 
 const app = express();
 
@@ -12,4 +13,5 @@ app.use("/", AppRouter.routes)
 
 app.listen(envs.PORT, ()=>{
   console.log(`Server is running on port ${envs.PORT}`)
+  EmailJob()
 })
