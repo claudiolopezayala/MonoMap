@@ -19,6 +19,8 @@ export const EmailJob = () => {
       await Promise.all(
         cases.map(async (monoCase) => {
           const htmlBody = generateIncidentEmailTemplate(
+            monoCase.genre,
+            monoCase.age,
             monoCase.lat,
             monoCase.lng
           )

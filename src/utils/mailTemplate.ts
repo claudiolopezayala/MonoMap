@@ -1,6 +1,6 @@
 import { envs } from "./dontenv"
 
-export function generateIncidentEmailTemplate(lat: number, lng: number): string {
+export function generateIncidentEmailTemplate(gender: string, age: number, lat: number, lng: number): string {
   const mapImageUrl = generateMapboxStaticImageURL(lat, lng)
   return `
   <!DOCTYPE html>
@@ -63,6 +63,8 @@ export function generateIncidentEmailTemplate(lat: number, lng: number): string 
           </div>
           <div class="content">
               <p><strong>Nuevo Caso registrado o actualizado</p>
+              <p><strong>Género:</strong> ${gender}</p>
+              <p><strong>Edad:</strong> ${age}</p>
               <p><strong>Latitud:</strong> ${lat}</p>
               <p><strong>Longitud:</strong> ${lng}</p>
               <img src="${mapImageUrl}" class="map-image"/>
