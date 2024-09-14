@@ -3,9 +3,15 @@ import { StatusCodes } from "http-status-codes"
 import { CaseModel }from "../model/case-model"
 
 export class CaseController {
-  public getAll = async(req: Request, res: Response)=>{
+  public getLastWeek = async(req: Request, res: Response)=>{
     try{
-      res.json("test").status(StatusCodes.OK)
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
+
+      const cases = await CaseModel.find({
+      creationDate: { $gte: oneWeekAgo }
+      });
+      res.json(cases).status(StatusCodes.OK)
     }catch(error){
       res.json(error).status(StatusCodes.INTERNAL_SERVER_ERROR)
     }
