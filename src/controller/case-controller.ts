@@ -3,6 +3,15 @@ import { StatusCodes } from "http-status-codes"
 import { CaseModel }from "../model/case-model"
 
 export class CaseController {
+  public getAll = async(req: Request, res: Response)=>{
+    try{
+      const cases = await CaseModel.find()
+      res.json(cases).status(StatusCodes.OK)
+    }catch(error){
+      res.json(error).status(StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+  }
+
   public deleteCase = async(req: Request, res: Response)=>{
     try{
       const {id} = req.params
