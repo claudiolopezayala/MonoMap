@@ -7,6 +7,7 @@ export class CaseRouter{
     const caseController = new CaseController()
     router.post("/", caseController.createCase)
     router.get("/", caseController.getLastWeek)
+    router.get("/:id", caseController.getoneById)
     return router
   }
 }

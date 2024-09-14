@@ -3,6 +3,16 @@ import { StatusCodes } from "http-status-codes"
 import { CaseModel }from "../model/case-model"
 
 export class CaseController {
+  public getoneById = async(req: Request, res: Response)=>{
+    try{
+      const {id} = req.params
+      const monoCase = await CaseModel.findById(id)
+      res.json(monoCase).status(StatusCodes.OK)
+    }catch(error){
+      res.json(error).status(StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+  }
+
   public getLastWeek = async(req: Request, res: Response)=>{
     try{
       const oneWeekAgo = new Date();
